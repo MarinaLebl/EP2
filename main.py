@@ -13,10 +13,11 @@ print("     dica-> entra no mercado de dicas")
 print("     desisto-> desiste da rodada")
 print("     inventario-> exibe sua posição")
 print("\n")
+print("Um país foi escolhido, tente adivinhar!")
  
 # dados
 EARTH_RADIUS = 6371
-DADOS = {
+dic = {
   "asia": {
     "afeganistao": {
       "area": 652230,
@@ -3891,4 +3892,8 @@ def sorteia_letra(palavra, lista):
         letra=random.choice(palavra)
     return letra
 
-
+tentativas=20
+if tentativas>0:
+    print("Você tem {} tentativa(s)".format(tentativas))
+    print(input("Qual seu palpite?"))
+    tentativas-=1
