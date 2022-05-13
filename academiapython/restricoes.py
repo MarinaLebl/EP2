@@ -1,16 +1,9 @@
-import random 
-
-def sorteia_letra(palavra, lista):
-    palavra=palavra.lower()
-    especiais= ['.', ',', '-', ';', ' ']
-    for item in lista:
-        especiais.append(item)
-    for m in palavra:
-        if m in especiais:
-            palavra=palavra.replace(m, "")
-    if palavra=="":
-        return""
-    letra=random.choice(palavra)
-    while letra in especiais:
-        letra=random.choice(palavra)
-    return letra
+def test_sorteia_letra(palavra, restrito, execs=1000):
+    test_results = {}
+    for _ in range(execs):
+        letra = sorteia_letra(palavra, restrito)
+        if letra in test_results:
+            test_results[letra] += 1
+        else:
+            test_results[letra] = 1
+    return test_results
