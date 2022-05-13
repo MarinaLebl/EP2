@@ -1,12 +1,8 @@
 def adiciona_em_ordem(paisx,distanciax,listapais):
-    nomes = []
-    for elemen in listapais:
-        nome = elemen[0]
-        nomes.append(nome)
-    if paisx in nomes:
-        return listapais
-    for elemen in listapais:
-        distancia = elemen[1]
-        nomes.append(distancia)
-    if distanciax in distancia:
-        return listapais
+    total=0
+    paisx_distanciax=[paisx, distanciax]
+    for x in listapais:
+        if distanciax>x[1]:
+            total+=1
+    listapais.insert(total, paisx_distanciax)
+    return listapais
