@@ -13,4 +13,4 @@ def sorteia_letra(palavra, lista):
     letra=random.choice(palavra)
     while letra in especiais:
         letra=random.choice(palavra)
-    return letra
+    return letr
