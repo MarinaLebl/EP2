@@ -1,4 +1,4 @@
-def test_sorteia_letra(palavra, restrito, execs=1000):
+def sorteia_letra(palavra, restrito, execs=1000):
     test_results = {}
     for _ in range(execs):
         letra = sorteia_letra(palavra, restrito)
