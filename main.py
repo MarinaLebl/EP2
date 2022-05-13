@@ -3892,8 +3892,22 @@ def sorteia_letra(palavra, lista):
         letra=random.choice(palavra)
     return letra
 
-tentativas=20
-if tentativas>0:
+#inicio
+continuar=True
+while continuar: 
+  tentativas=20
+  if tentativas>0:
     print("Você tem {} tentativa(s)".format(tentativas))
-    print(input("Qual seu palpite?"))
+    resposta= input("Qual seu palpite?")
+    print(resposta)
     tentativas-=1
+
+  if resposta=="desisto" :
+    b=input("Tem certeza que deseja desistir da rodada? [s/n]")
+    print(b)
+    if b== "s":
+      print("Que deselegante desistir, o país era:{}". format(pais))
+      continuar=False
+    else:
+      continuar=True
+  
