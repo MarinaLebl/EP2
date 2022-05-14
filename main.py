@@ -1,3 +1,4 @@
+from lib2to3.pytree import WildcardPattern
 import random 
 import math
 
@@ -16,7 +17,7 @@ print("\n")
 print("Um país foi escolhido, tente adivinhar!")
  
 # dados
-EARTH_RADIUS = 6371
+raio = 6371
 dic = {
   "asia": {
     "afeganistao": {
@@ -3842,30 +3843,6 @@ def normaliza(dic):
             d[pais]= pais2
     return d
 
-def sorteia_pais(dic):
-    b= random.choice(list(dic.keys()))
-    return b
-
-def haversine(raio, la1_, lo1_, la2_, lo2_):
-    la1= (la1_*math.pi)/180
-    lo1= (lo1_*math.pi)/180
-    la2= (la2_*math.pi)/180
-    lo2= (lo2_*math.pi)/180
-    a=((math.sin((la2-la1)/2))**2)
-    b=((math.sin((lo2-lo1)/2))**2)
-    c= math.cos(la1)* math.cos(la2)
-    r= math.sqrt(a+(c*b))
-    d=2*raio*math.asin(r)
-    return d
-
-def adiciona_em_ordem(paisx,distanciax,listapais):
-    total=0
-    paisx_distanciax=[paisx, distanciax]
-    for x in listapais:
-        if distanciax>x[1]:
-            total+=1
-    listapais.insert(total, paisx_distanciax)
-    return listapais
 
 def esta_na_lista(pais, lista):
     esta = 0
@@ -3896,11 +3873,15 @@ def sorteia_letra(palavra, lista):
 continuar=True
 while continuar: 
   tentativas=20
-  if tentativas>0:
+  while tentativas>0:
     print("Você tem {} tentativa(s)".format(tentativas))
     resposta= input("Qual seu palpite?")
     print(resposta)
-    tentativas-=1
+    tentativas= tentativas-1
+
+  def sorteia_pais(dic):
+    pais= random.choice(list(dic.keys()))
+    return pais
 
   if resposta=="desisto" :
     b=input("Tem certeza que deseja desistir da rodada? [s/n]")
@@ -3911,3 +3892,28 @@ while continuar:
     else:
       continuar=True
   
+  elif resposta == pais:
+    print("Parabens! Você acertou!")
+    continuar=False
+
+  else: 
+    def haversine(raio, la1_, lo1_, la2_, lo2_):
+    la1= (la1_*math.pi)/180
+    lo1= (lo1_*math.pi)/180
+    la2= (la2_*math.pi)/180
+    lo2= (lo2_*math.pi)/180
+    a=((math.sin((la2-la1)/2))**2)
+    b=((math.sin((lo2-lo1)/2))**2)
+    c= math.cos(la1)* math.cos(la2)
+    r= math.sqrt(a+(c*b))
+    d=2*raio*math.asin(r)
+    return d
+    def adiciona_em_ordem(resposta,d,listapais):
+      total=0
+      paisx_distanciax=[resposta, d]
+      for x in listapais:
+          if d>x[1]:
+              total+=1
+      listapais.insert(total, paisx_distanciax)
+      return listapais
+
