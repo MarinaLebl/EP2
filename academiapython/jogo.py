@@ -8,10 +8,14 @@ if b == '2':
     print('até a próxima')
 if b != '1' and b !='2':
     print('comando inválido')
-    
+
 def instrucoes(instrucao):
     print('Comandos:')
     print('dica -  entra no mercado de dicas')
     print('desisto -  desiste da rodadaa')
     print('inventario -  exibe sua posição')
     return instrucao
+
+def jogo(jogadas):
+    jogadas.instrucoes()
+    while jogadas.tentativas > 0:
