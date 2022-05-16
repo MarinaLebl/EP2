@@ -15,7 +15,7 @@ print("     desisto-> desiste da rodada")
 print("     inventario-> exibe sua posição")
 print("\n")
 print("Um país foi escolhido, tente adivinhar!")
- 
+
 # dados
 raio = 6371
 dic = {
@@ -3833,14 +3833,15 @@ dic = {
   }
 }
 
+
 #funções
 def normaliza(dic):
     d={} 
     for cont in dic:
-        for pais in dic[cont]:
-            pais2= dic[cont][pais]
-            pais2["continente"]=cont
-            d[pais]= pais2
+        for pais_ in dic[cont]:
+            pais= dic[cont][pais_]
+            pais_["continente"]=cont
+            d[pais_]= pais
     return d
 
 
@@ -3896,6 +3897,9 @@ while continuar:
     print("Parabens! Você acertou!")
     continuar=False
 
+  if pais != dic[cont][pais]:
+    continuar=False
+
   else: 
     def haversine(raio, la1_, lo1_, la2_, lo2_):
     la1= (la1_*math.pi)/180
@@ -3916,4 +3920,6 @@ while continuar:
               total+=1
       listapais.insert(total, paisx_distanciax)
       return listapais
+      print(listadepaises)
+  
 
